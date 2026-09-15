@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,221 +7,241 @@
 <title>Bate-Papo</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #111827;
-    color: #fff;
-    height: 100vh;
-    overflow: hidden;
+body{
+    font-family:Arial,sans-serif;
+    background:#111827;
+    color:white;
+    height:100vh;
+    overflow:hidden;
 }
 
-/* TELA DE ENTRADA */
-#login {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #111827, #1f2937);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 10;
+/* LOGIN */
+#login{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#111827,#1f2937);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:10;
 }
 
-.login-box {
-    width: 100%;
-    max-width: 400px;
-    background: #1f2937;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+.login-box{
+    width:100%;
+    max-width:400px;
+    background:#1f2937;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
-.logo {
-    font-size: 42px;
-    margin-bottom: 10px;
+.logo{
+    font-size:48px;
+    margin-bottom:10px;
 }
 
-.login-box h1 {
-    margin-bottom: 8px;
+.login-box h1{
+    margin-bottom:8px;
 }
 
-.login-box p {
-    color: #9ca3af;
-    margin-bottom: 25px;
+.login-box p{
+    color:#9ca3af;
+    margin-bottom:20px;
 }
 
-.login-box input {
-    width: 100%;
-    padding: 15px;
-    border: 0;
-    border-radius: 12px;
-    outline: none;
-    font-size: 16px;
-    margin-bottom: 12px;
+.login-box input{
+    width:100%;
+    padding:15px;
+    border:0;
+    border-radius:12px;
+    outline:none;
+    font-size:16px;
+    margin-bottom:12px;
 }
 
-.login-box button {
-    width: 100%;
-    padding: 15px;
-    border: 0;
-    border-radius: 12px;
-    background: #7c3aed;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.login-box button:hover {
-    background: #6d28d9;
+.login-box button{
+    width:100%;
+    padding:15px;
+    border:0;
+    border-radius:12px;
+    background:#7c3aed;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 /* CHAT */
-#chat {
-    display: none;
-    height: 100vh;
-    flex-direction: column;
+#chat{
+    display:none;
+    height:100vh;
+    flex-direction:column;
 }
 
-header {
-    height: 70px;
-    background: #1f2937;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    border-bottom: 1px solid #374151;
+header{
+    height:70px;
+    background:#1f2937;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    border-bottom:1px solid #374151;
 }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.header-logo {
-    font-size: 30px;
+.header-logo{
+    font-size:30px;
 }
 
-.header-title {
-    font-weight: bold;
-    font-size: 18px;
+.header-title{
+    font-weight:bold;
+    font-size:18px;
 }
 
-.online {
-    color: #22c55e;
-    font-size: 12px;
+.online{
+    color:#22c55e;
+    font-size:12px;
 }
 
-#messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* BOTÃO COMPARTILHAR */
+.share{
+    background:#374151;
+    border:0;
+    color:white;
+    padding:10px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.message {
-    max-width: 75%;
-    padding: 10px 14px;
-    border-radius: 15px;
-    background: #374151;
-    align-self: flex-start;
+.share:hover{
+    background:#4b5563;
 }
 
-.message.mine {
-    background: #7c3aed;
-    align-self: flex-end;
+/* MENSAGENS */
+#messages{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
 }
 
-.message-name {
-    font-size: 12px;
-    font-weight: bold;
-    color: #c4b5fd;
-    margin-bottom: 4px;
+.message{
+    max-width:75%;
+    padding:10px 14px;
+    border-radius:15px;
+    background:#374151;
+    align-self:flex-start;
 }
 
-.mine .message-name {
-    color: #ede9fe;
+.message.mine{
+    background:#7c3aed;
+    align-self:flex-end;
 }
 
-.message-text {
-    font-size: 15px;
-    word-wrap: break-word;
+.message-name{
+    font-size:12px;
+    font-weight:bold;
+    color:#c4b5fd;
+    margin-bottom:4px;
 }
 
-.message-time {
-    font-size: 10px;
-    opacity: .65;
-    margin-top: 5px;
-    text-align: right;
+.mine .message-name{
+    color:#ede9fe;
 }
 
-.system {
-    align-self: center;
-    color: #9ca3af;
-    font-size: 12px;
-    margin: 5px 0;
+.message-text{
+    font-size:15px;
+    word-wrap:break-word;
 }
 
-#form {
-    display: flex;
-    gap: 10px;
-    padding: 12px;
-    background: #1f2937;
-    border-top: 1px solid #374151;
+.message-time{
+    font-size:10px;
+    opacity:.65;
+    margin-top:5px;
+    text-align:right;
 }
 
-#message {
-    flex: 1;
-    padding: 14px;
-    border: 0;
-    outline: none;
-    border-radius: 25px;
-    font-size: 15px;
-    background: #374151;
-    color: white;
+/* SISTEMA */
+.system{
+    align-self:center;
+    color:#9ca3af;
+    font-size:12px;
 }
 
-#message::placeholder {
-    color: #9ca3af;
+/* ENVIO */
+#form{
+    display:flex;
+    gap:10px;
+    padding:12px;
+    background:#1f2937;
+    border-top:1px solid #374151;
 }
 
-#send {
-    width: 50px;
-    height: 50px;
-    border: 0;
-    border-radius: 50%;
-    background: #7c3aed;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
+#message{
+    flex:1;
+    padding:14px;
+    border:0;
+    outline:none;
+    border-radius:25px;
+    font-size:15px;
+    background:#374151;
+    color:white;
 }
 
-#send:hover {
-    background: #6d28d9;
+#message::placeholder{
+    color:#9ca3af;
 }
 
-@media(max-width:600px) {
-    header {
-        height: 60px;
-        padding: 0 14px;
+#send{
+    width:50px;
+    height:50px;
+    border:0;
+    border-radius:50%;
+    background:#7c3aed;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* CELULAR */
+@media(max-width:600px){
+
+    header{
+        height:60px;
+        padding:0 12px;
     }
 
-    #messages {
-        padding: 12px;
+    .header-title{
+        font-size:15px;
     }
 
-    .message {
-        max-width: 85%;
+    #messages{
+        padding:12px;
+    }
+
+    .message{
+        max-width:85%;
+    }
+
+    .share{
+        padding:8px 10px;
+        font-size:12px;
     }
 }
 </style>
@@ -228,16 +249,26 @@ header {
 
 <body>
 
-<!-- ENTRADA -->
+
+<!-- =========================
+     LOGIN
+========================= -->
+
 <div id="login">
+
     <div class="login-box">
+
         <div class="logo">💬</div>
+
         <h1>Bate-Papo</h1>
-        <p>Entre na sala e converse com outras pessoas.</p>
+
+        <p>
+            Entre na sala e converse em tempo real.
+        </p>
 
         <input
-            type="text"
             id="username"
+            type="text"
             maxlength="20"
             placeholder="Digite seu apelido"
             autocomplete="off"
@@ -246,46 +277,87 @@ header {
         <button onclick="entrar()">
             ENTRAR NA SALA
         </button>
+
     </div>
+
 </div>
 
-<!-- CHAT -->
+
+<!-- =========================
+     CHAT
+========================= -->
+
 <div id="chat">
 
     <header>
+
         <div class="header-left">
-            <div class="header-logo">💬</div>
+
+            <div class="header-logo">
+                💬
+            </div>
 
             <div>
-                <div class="header-title">Sala Pública</div>
-                <div class="online">● Conectado</div>
+
+                <div class="header-title">
+                    Sala <span id="salaNome"></span>
+                </div>
+
+                <div class="online">
+                    ● Conectado
+                </div>
+
             </div>
+
         </div>
+
+
+        <button
+            class="share"
+            onclick="compartilharSala()"
+        >
+            🔗 Compartilhar
+        </button>
+
     </header>
+
 
     <div id="messages"></div>
 
+
     <form id="form">
+
         <input
-            type="text"
             id="message"
+            type="text"
+            maxlength="500"
             placeholder="Digite uma mensagem..."
             autocomplete="off"
-            maxlength="500"
         >
 
-        <button id="send" type="submit">
+        <button
+            id="send"
+            type="submit"
+        >
             ➤
         </button>
+
     </form>
 
 </div>
 
-<!-- FIREBASE -->
+
+<!-- =========================
+     FIREBASE
+========================= -->
+
 <script type="module">
 
-import { initializeApp }
+import {
+    initializeApp
+}
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
 import {
     getDatabase,
@@ -296,203 +368,510 @@ import {
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 
-/* =====================================================
-   COLOQUE AQUI AS INFORMAÇÕES DO SEU FIREBASE
-   ===================================================== */
+/*
+=====================================================
+CONFIGURAÇÃO FIREBASE
+
+COLOQUE AQUI OS DADOS DO SEU PROJETO
+=====================================================
+*/
 
 const firebaseConfig = {
 
-    apiKey: "COLOQUE_SUA_API_KEY",
+    apiKey:
+    "COLOQUE_SUA_API_KEY",
 
-    authDomain: "SEU-PROJETO.firebaseapp.com",
+    authDomain:
+    "SEU-PROJETO.firebaseapp.com",
 
-    databaseURL: "https://SEU-PROJETO-default-rtdb.firebaseio.com",
+    databaseURL:
+    "https://SEU-PROJETO-default-rtdb.firebaseio.com",
 
-    projectId: "SEU-PROJETO",
+    projectId:
+    "SEU-PROJETO",
 
-    storageBucket: "SEU-PROJETO.firebasestorage.app",
+    storageBucket:
+    "SEU-PROJETO.firebasestorage.app",
 
-    messagingSenderId: "COLOQUE_SEU_ID",
+    messagingSenderId:
+    "COLOQUE_SEU_ID",
 
-    appId: "COLOQUE_SEU_APP_ID"
+    appId:
+    "COLOQUE_SEU_APP_ID"
 
 };
 
 
-/* =====================================================
-   INICIALIZAÇÃO
-   ===================================================== */
+/*
+=====================================================
+INICIAR FIREBASE
+=====================================================
+*/
 
-const app = initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const db = getDatabase(app);
+const db =
+getDatabase(app);
 
-const mensagensRef = ref(db, "sala_publica/mensagens");
 
+/*
+=====================================================
+VARIÁVEIS
+=====================================================
+*/
 
 let nomeUsuario = "";
 
+let salaAtual = "";
 
-/* =====================================================
-   ENTRAR
-   ===================================================== */
 
-window.entrar = function() {
+/*
+=====================================================
+PEGAR SALA PELO LINK
+=====================================================
 
-    const campo = document.getElementById("username");
+Exemplo:
 
-    const nome = campo.value.trim();
+https://seusite.com/?sala=ABC123
 
-    if (!nome) {
+=====================================================
+*/
 
-        alert("Digite um apelido.");
+function obterSala(){
+
+    const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
+
+    let sala =
+    parametros.get("sala");
+
+
+    /*
+    Se o link não tiver sala,
+    cria uma sala automaticamente.
+    */
+
+    if(!sala){
+
+        sala =
+        gerarCodigoSala();
+
+
+        const novaURL =
+        window.location.origin +
+        window.location.pathname +
+        "?sala=" +
+        sala;
+
+
+        window.history.replaceState(
+            {},
+            "",
+            novaURL
+        );
+    }
+
+
+    return sala;
+}
+
+
+/*
+=====================================================
+GERAR CÓDIGO DA SALA
+=====================================================
+*/
+
+function gerarCodigoSala(){
+
+    const caracteres =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    let codigo = "";
+
+    for(let i = 0; i < 6; i++){
+
+        codigo +=
+        caracteres[
+            Math.floor(
+                Math.random() *
+                caracteres.length
+            )
+        ];
+    }
+
+    return codigo;
+}
+
+
+/*
+=====================================================
+SALA ATUAL
+=====================================================
+*/
+
+salaAtual =
+obterSala();
+
+
+document.getElementById(
+    "salaNome"
+).textContent =
+salaAtual;
+
+
+/*
+=====================================================
+REFERÊNCIA DAS MENSAGENS
+
+Cada sala possui seu próprio espaço:
+
+salas
+ ├── ABC123
+ │    └── mensagens
+ │
+ └── XYZ789
+      └── mensagens
+
+=====================================================
+*/
+
+const mensagensRef =
+ref(
+    db,
+    "salas/" +
+    salaAtual +
+    "/mensagens"
+);
+
+
+/*
+=====================================================
+ENTRAR
+=====================================================
+*/
+
+window.entrar =
+function(){
+
+    const campo =
+    document.getElementById(
+        "username"
+    );
+
+
+    const nome =
+    campo.value.trim();
+
+
+    if(!nome){
+
+        alert(
+            "Digite um apelido."
+        );
 
         return;
     }
 
-    nomeUsuario = nome;
 
-    document.getElementById("login").style.display = "none";
+    nomeUsuario =
+    nome;
 
-    document.getElementById("chat").style.display = "flex";
 
-    document.getElementById("message").focus();
+    document.getElementById(
+        "login"
+    ).style.display =
+    "none";
+
+
+    document.getElementById(
+        "chat"
+    ).style.display =
+    "flex";
+
+
+    document.getElementById(
+        "message"
+    ).focus();
+
 };
 
 
-/* =====================================================
-   ENVIAR MENSAGEM
-   ===================================================== */
+/*
+=====================================================
+ENVIAR
+=====================================================
+*/
 
-document.getElementById("form").addEventListener("submit", async function(e) {
-
-    e.preventDefault();
-
-    const campo = document.getElementById("message");
-
-    const texto = campo.value.trim();
-
-    if (!texto) return;
-
-    await push(mensagensRef, {
-
-        nome: nomeUsuario,
-
-        mensagem: texto,
-
-        horario: Date.now()
-
-    });
-
-    campo.value = "";
-
-    campo.focus();
-
-});
-
-
-/* =====================================================
-   RECEBER MENSAGENS EM TEMPO REAL
-   ===================================================== */
-
-onChildAdded(mensagensRef, (snapshot) => {
-
-    const dados = snapshot.val();
-
-    mostrarMensagem(dados);
-
-});
-
-
-/* =====================================================
-   MOSTRAR MENSAGEM
-   ===================================================== */
-
-function mostrarMensagem(dados) {
-
-    const container = document.getElementById("messages");
-
-    const div = document.createElement("div");
-
-    div.className = "message";
-
-    if (dados.nome === nomeUsuario) {
-
-        div.classList.add("mine");
-
-    }
-
-
-    const nome = document.createElement("div");
-
-    nome.className = "message-name";
-
-    nome.textContent = dados.nome;
-
-
-    const texto = document.createElement("div");
-
-    texto.className = "message-text";
-
-    texto.textContent = dados.mensagem;
-
-
-    const horario = document.createElement("div");
-
-    horario.className = "message-time";
-
-    horario.textContent = formatarHora(dados.horario);
-
-
-    div.appendChild(nome);
-
-    div.appendChild(texto);
-
-    div.appendChild(horario);
-
-    container.appendChild(div);
-
-
-    container.scrollTop = container.scrollHeight;
-}
-
-
-/* =====================================================
-   HORÁRIO
-   ===================================================== */
-
-function formatarHora(timestamp) {
-
-    const data = new Date(timestamp);
-
-    return data.toLocaleTimeString("pt-BR", {
-
-        hour: "2-digit",
-
-        minute: "2-digit"
-
-    });
-
-}
-
-
-/* =====================================================
-   ENTER PARA ENVIAR
-   ===================================================== */
-
-document.getElementById("message").addEventListener("keydown", function(e) {
-
-    if (e.key === "Enter") {
+document.getElementById(
+    "form"
+).addEventListener(
+    "submit",
+    async function(e){
 
         e.preventDefault();
 
-        document.getElementById("form").requestSubmit();
+
+        const campo =
+        document.getElementById(
+            "message"
+        );
+
+
+        const texto =
+        campo.value.trim();
+
+
+        if(!texto)
+            return;
+
+
+        await push(
+            mensagensRef,
+            {
+
+                nome:
+                nomeUsuario,
+
+                mensagem:
+                texto,
+
+                horario:
+                Date.now()
+
+            }
+        );
+
+
+        campo.value = "";
+
+        campo.focus();
+
+    }
+);
+
+
+/*
+=====================================================
+RECEBER MENSAGENS
+=====================================================
+*/
+
+onChildAdded(
+    mensagensRef,
+    (snapshot) => {
+
+        const dados =
+        snapshot.val();
+
+
+        mostrarMensagem(
+            dados
+        );
+
+    }
+);
+
+
+/*
+=====================================================
+MOSTRAR MENSAGEM
+=====================================================
+*/
+
+function mostrarMensagem(
+    dados
+){
+
+    const container =
+    document.getElementById(
+        "messages"
+    );
+
+
+    const div =
+    document.createElement(
+        "div"
+    );
+
+
+    div.className =
+    "message";
+
+
+    if(
+        dados.nome ===
+        nomeUsuario
+    ){
+
+        div.classList.add(
+            "mine"
+        );
 
     }
 
-});
+
+    const nome =
+    document.createElement(
+        "div"
+    );
+
+
+    nome.className =
+    "message-name";
+
+
+    nome.textContent =
+    dados.nome;
+
+
+    const texto =
+    document.createElement(
+        "div"
+    );
+
+
+    texto.className =
+    "message-text";
+
+
+    texto.textContent =
+    dados.mensagem;
+
+
+    const horario =
+    document.createElement(
+        "div"
+    );
+
+
+    horario.className =
+    "message-time";
+
+
+    horario.textContent =
+    formatarHora(
+        dados.horario
+    );
+
+
+    div.appendChild(
+        nome
+    );
+
+    div.appendChild(
+        texto
+    );
+
+    div.appendChild(
+        horario
+    );
+
+
+    container.appendChild(
+        div
+    );
+
+
+    container.scrollTop =
+    container.scrollHeight;
+
+}
+
+
+/*
+=====================================================
+HORÁRIO
+=====================================================
+*/
+
+function formatarHora(
+    timestamp
+){
+
+    const data =
+    new Date(timestamp);
+
+
+    return data.toLocaleTimeString(
+        "pt-BR",
+        {
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
+
+}
+
+
+/*
+=====================================================
+COMPARTILHAR SALA
+=====================================================
+*/
+
+window.compartilharSala =
+async function(){
+
+    const link =
+    window.location.href;
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            link
+        );
+
+
+        alert(
+            "🔗 Link da sala copiado!\n\n" +
+            "Envie este link para outra pessoa entrar na mesma sala."
+        );
+
+
+    }catch(e){
+
+        prompt(
+            "Copie o link da sala:",
+            link
+        );
+
+    }
+
+};
+
+
+/*
+=====================================================
+ENTER PARA ENVIAR
+=====================================================
+*/
+
+document.getElementById(
+    "message"
+).addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Enter"){
+
+            e.preventDefault();
+
+            document.getElementById(
+                "form"
+            ).requestSubmit();
+
+        }
+
+    }
+);
 
 </script>
 
 </body>
 </html>
+```
