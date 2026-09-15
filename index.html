@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bate-Papo</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* TELA DE ENTRADA */
+#login {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #111827, #1f2937);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    background: #1f2937;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+.logo {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.login-box h1 {
+    margin-bottom: 8px;
+}
+
+.login-box p {
+    color: #9ca3af;
+    margin-bottom: 25px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    border-radius: 12px;
+    background: #7c3aed;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background: #6d28d9;
+}
+
+/* CHAT */
+#chat {
+    display: none;
+    height: 100vh;
+    flex-direction: column;
+}
+
+header {
+    height: 70px;
+    background: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 1px solid #374151;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    font-size: 30px;
+}
+
+.header-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.online {
+    color: #22c55e;
+    font-size: 12px;
+}
+
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    background: #374151;
+    align-self: flex-start;
+}
+
+.message.mine {
+    background: #7c3aed;
+    align-self: flex-end;
+}
+
+.message-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #c4b5fd;
+    margin-bottom: 4px;
+}
+
+.mine .message-name {
+    color: #ede9fe;
+}
+
+.message-text {
+    font-size: 15px;
+    word-wrap: break-word;
+}
+
+.message-time {
+    font-size: 10px;
+    opacity: .65;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.system {
+    align-self: center;
+    color: #9ca3af;
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+#form {
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+    background: #1f2937;
+    border-top: 1px solid #374151;
+}
+
+#message {
+    flex: 1;
+    padding: 14px;
+    border: 0;
+    outline: none;
+    border-radius: 25px;
+    font-size: 15px;
+    background: #374151;
+    color: white;
+}
+
+#message::placeholder {
+    color: #9ca3af;
+}
+
+#send {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    border-radius: 50%;
+    background: #7c3aed;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#send:hover {
+    background: #6d28d9;
+}
+
+@media(max-width:600px) {
+    header {
+        height: 60px;
+        padding: 0 14px;
+    }
+
+    #messages {
+        padding: 12px;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENTRADA -->
+<div id="login">
+    <div class="login-box">
+        <div class="logo">💬</div>
+        <h1>Bate-Papo</h1>
+        <p>Entre na sala e converse com outras pessoas.</p>
+
+        <input
+            type="text"
+            id="username"
+            maxlength="20"
+            placeholder="Digite seu apelido"
+            autocomplete="off"
+        >
+
+        <button onclick="entrar()">
+            ENTRAR NA SALA
+        </button>
+    </div>
+</div>
+
+<!-- CHAT -->
+<div id="chat">
+
+    <header>
+        <div class="header-left">
+            <div class="header-logo">💬</div>
+
+            <div>
+                <div class="header-title">Sala Pública</div>
+                <div class="online">● Conectado</div>
+            </div>
+        </div>
+    </header>
+
+    <div id="messages"></div>
+
+    <form id="form">
+        <input
+            type="text"
+            id="message"
+            placeholder="Digite uma mensagem..."
+            autocomplete="off"
+            maxlength="500"
+        >
+
+        <button id="send" type="submit">
+            ➤
+        </button>
+    </form>
+
+</div>
+
+<!-- FIREBASE -->
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    push,
+    onChildAdded
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+/* =====================================================
+   COLOQUE AQUI AS INFORMAÇÕES DO SEU FIREBASE
+   ===================================================== */
+
+const firebaseConfig = {
+
+    apiKey: "COLOQUE_SUA_API_KEY",
+
+    authDomain: "SEU-PROJETO.firebaseapp.com",
+
+    databaseURL: "https://SEU-PROJETO-default-rtdb.firebaseio.com",
+
+    projectId: "SEU-PROJETO",
+
+    storageBucket: "SEU-PROJETO.firebasestorage.app",
+
+    messagingSenderId: "COLOQUE_SEU_ID",
+
+    appId: "COLOQUE_SEU_APP_ID"
+
+};
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+   ===================================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase(app);
+
+const mensagensRef = ref(db, "sala_publica/mensagens");
+
+
+let nomeUsuario = "";
+
+
+/* =====================================================
+   ENTRAR
+   ===================================================== */
+
+window.entrar = function() {
+
+    const campo = document.getElementById("username");
+
+    const nome = campo.value.trim();
+
+    if (!nome) {
+
+        alert("Digite um apelido.");
+
+        return;
+    }
+
+    nomeUsuario = nome;
+
+    document.getElementById("login").style.display = "none";
+
+    document.getElementById("chat").style.display = "flex";
+
+    document.getElementById("message").focus();
+};
+
+
+/* =====================================================
+   ENVIAR MENSAGEM
+   ===================================================== */
+
+document.getElementById("form").addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const campo = document.getElementById("message");
+
+    const texto = campo.value.trim();
+
+    if (!texto) return;
+
+    await push(mensagensRef, {
+
+        nome: nomeUsuario,
+
+        mensagem: texto,
+
+        horario: Date.now()
+
+    });
+
+    campo.value = "";
+
+    campo.focus();
+
+});
+
+
+/* =====================================================
+   RECEBER MENSAGENS EM TEMPO REAL
+   ===================================================== */
+
+onChildAdded(mensagensRef, (snapshot) => {
+
+    const dados = snapshot.val();
+
+    mostrarMensagem(dados);
+
+});
+
+
+/* =====================================================
+   MOSTRAR MENSAGEM
+   ===================================================== */
+
+function mostrarMensagem(dados) {
+
+    const container = document.getElementById("messages");
+
+    const div = document.createElement("div");
+
+    div.className = "message";
+
+    if (dados.nome === nomeUsuario) {
+
+        div.classList.add("mine");
+
+    }
+
+
+    const nome = document.createElement("div");
+
+    nome.className = "message-name";
+
+    nome.textContent = dados.nome;
+
+
+    const texto = document.createElement("div");
+
+    texto.className = "message-text";
+
+    texto.textContent = dados.mensagem;
+
+
+    const horario = document.createElement("div");
+
+    horario.className = "message-time";
+
+    horario.textContent = formatarHora(dados.horario);
+
+
+    div.appendChild(nome);
+
+    div.appendChild(texto);
+
+    div.appendChild(horario);
+
+    container.appendChild(div);
+
+
+    container.scrollTop = container.scrollHeight;
+}
+
+
+/* =====================================================
+   HORÁRIO
+   ===================================================== */
+
+function formatarHora(timestamp) {
+
+    const data = new Date(timestamp);
+
+    return data.toLocaleTimeString("pt-BR", {
+
+        hour: "2-digit",
+
+        minute: "2-digit"
+
+    });
+
+}
+
+
+/* =====================================================
+   ENTER PARA ENVIAR
+   ===================================================== */
+
+document.getElementById("message").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+
+        e.preventDefault();
+
+        document.getElementById("form").requestSubmit();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
